@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class SortingTest<E> implements Sorting<E> {
-	LinkedList<Integer> list = new LinkedList<Integer>();
 
 	// constructor
 	public SortingTest() {
@@ -15,6 +14,7 @@ public class SortingTest<E> implements Sorting<E> {
 		String str = "";
 		int n = 1500;
 		SortingTest sort = new SortingTest();
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		Random random = new Random();
 		for (int i = 0; i < n; i++) {
 			list.add(random.nextInt(100));
@@ -60,21 +60,20 @@ public class SortingTest<E> implements Sorting<E> {
 	public void quicksort(LinkedList<E> list, boolean reversed) {
 		if(reversed == false) {
 			LinkedList n = list;
-			quickSort(0, list.size() - 1);
-			return n;
+			quickSort(list, 0, list.size() - 1);
 		} else {
 	}
 
-	private void quickSort(int left, int right) {
+	private void quickSort(LinkedList<E> list, int left, int right) {
 		if (right - left <= 0)
 			return;
-		int pivot = list.get(right);
-		int partition = getPartition(left, right, pivot);
+		E pivot = list.get(right);
+		E partition = getPartition(list, left, right, pivot);
 		quickSort(left, partition - 1);
 		quickSort(partition + 1, right);
 	}
 
-	private int getPartition(int left, int right, int pivot) {
+	private int getPartition(LinkedList<E> list, int left, int right, int pivot) {
 		int lPtr = left - 1;
 		int rPtr = right;
 		for (;;) {
@@ -91,11 +90,11 @@ public class SortingTest<E> implements Sorting<E> {
 		return lPtr;
 	}
 
-	private void swap(int one, int two) {
-		int temp = list.get(one);
+	private void swap(LinkedList list, int one, int two) {
+		Object temp = list.get(one);
 		list.remove(one);
 		list.add(temp);
-		int tempTwo = list.get(two);
+		Object tempTwo = list.get(two);
 		list.remove(two);
 		list.add(tempTwo);
 	}
@@ -103,21 +102,20 @@ public class SortingTest<E> implements Sorting<E> {
 	@Override
 	public void mergeSortLL(LinkedList<E> list, boolean reversed) {
 		LinkedList n = list;
-		LinkedList<E> aux = new LinkedList<E>;
-		mergeSortHelper(0,n.size() - 1);
-		return n;
+		LinkedList<E> aux = new LinkedList<E>();
+		mergeSortHelper(n, aux, 0, n.size() - 1);
 	}
 
-	private void mergeSortHelper(int low, int hi) {
+	private void mergeSortHelper(LinkedList<E> n, LinkedList<E> aux, int low, int hi) {
 		if (low == hi)
 			return;
 		int mid = (low + hi) >> 1;
-		mergeSortHelper(low, mid);
-		mergeSortHelper(mid + 1, hi);
-		merge(low, mid + 1, hi);
+		mergeSortHelper(n, aux, low, mid);
+		mergeSortHelper(n, aux, mid + 1, hi);
+		merge(n, aux, low, mid + 1, hi);
 	}
 
-	private void merge(int low, int hi, int upperBound) {
+	private void merge(LinkedList<E> n, LinkedList<E> aux, int low, int hi, int upperBound) {
 		int j = 0;
 		int lowerBound = low;
 		int mid = hi - 1;
