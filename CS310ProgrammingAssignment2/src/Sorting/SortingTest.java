@@ -67,19 +67,19 @@ public class SortingTest<E> implements Sorting<E> {
 	private void quickSort(LinkedList<E> list, int left, int right) {
 		if (right - left <= 0)
 			return;
-		E pivot = list.get(right);
-		E partition = getPartition(list, left, right, pivot);
-		quickSort(left, partition - 1);
-		quickSort(partition + 1, right);
+		Comparable pivot = (Comparable) list.get(right);
+		int partition = getPartition(list, left, right, pivot);
+		quickSort(list, left, partition - 1);
+		quickSort(list, partition + 1, right);
 	}
 
-	private int getPartition(LinkedList<E> list, int left, int right, int pivot) {
+	private int getPartition(LinkedList<E> list, int left, int right, Comparable pivot) {
 		int lPtr = left - 1;
 		int rPtr = right;
 		for (;;) {
-			while (list.get(++lPtr)).compareTo(pivot) < 0)
+			while (((Comparable) list.get(++lPtr)).compareTo(pivot) < 0)
 				;
-			while (rPtr > 0 && list.get(--rPtr).compareTo(pivot))
+			while (rPtr > 0 && ((Comparable) list.get(--rPtr)).compareTo(pivot) < 0)
 				;
 			if (lPtr >= rPtr)
 				break;
