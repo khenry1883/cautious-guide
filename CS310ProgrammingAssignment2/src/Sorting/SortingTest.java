@@ -58,10 +58,12 @@ public class SortingTest<E> implements Sorting<E> {
 
 	@Override
 	public void quicksort(LinkedList<E> list, boolean reversed) {
-		if(reversed == false) {
+		if (reversed == false) {
 			LinkedList n = list;
 			quickSort(list, 0, list.size() - 1);
 		} else {
+
+		}
 	}
 
 	private void quickSort(LinkedList<E> list, int left, int right) {
@@ -119,16 +121,16 @@ public class SortingTest<E> implements Sorting<E> {
 		int numElements = upperBound - lowerBound + 1; // number of items
 
 		while (low <= mid && hi <= upperBound)
-			if ((n.get(low)).compareTo(n.get(hi)))
-				aux.get(j++) = n.get(low++);
+			if (((Comparable) n.get(low)).compareTo(n.get(hi)) < 0)
+				aux.set(j++, n.get(low++));
 			else
-				aux.get(j++) = n.get(hi++);
+				aux.set(j++, n.get(hi++));
 		while (low <= mid)
-			aux.get(j++) = n.get(low++);
+			aux.set(j++, n.get(low++));
 		while (hi <= upperBound)
-			aux.get(j++) = n.get(hi++);
+			aux.set(j++, n.get(hi++));
 		for (j = 0; j < numElements; j++) {
-			n.get(lowerBound) = aux.get(j);
+			n.set(lowerBound, aux.get(j));
 		}
 	}
 
