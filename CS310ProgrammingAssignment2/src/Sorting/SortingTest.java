@@ -30,8 +30,8 @@ public class SortingTest<E> implements Sorting<E> {
 	public void insertionSort(LinkedList<E> list, int lowindex, int highindex, boolean reversed) {
 		for (int nextPos = 1; nextPos < list.size(); nextPos++) {
 			int temp = nextPos;
-			Comparable nextVal = (Comparable) list.get(nextPos);
-			while (temp > 0 && nextVal.compareTo(list.get(nextPos - 1)) < 0) {
+			Comparable nextVal = (Comparable) list.get(temp);
+			while (temp > 0 || nextVal.compareTo(list.get(temp - 1)) < 0) {
 				list.remove(temp);
 				list.add(temp - 1, (E) nextVal);
 				temp--;
