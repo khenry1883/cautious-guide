@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class SortingTest<E> implements Sorting<E> {
-	static LinkedList<Integer> list = new LinkedList<Integer>();
+	LinkedList<Integer> list = new LinkedList<Integer>();
 
 	// constructor
 	public SortingTest() {
@@ -65,7 +65,7 @@ public class SortingTest<E> implements Sorting<E> {
 		} else {
 	}
 
-	private static void quickSort(int left, int right) {
+	private void quickSort(int left, int right) {
 		if (right - left <= 0)
 			return;
 		int pivot = list.get(right);
@@ -74,7 +74,7 @@ public class SortingTest<E> implements Sorting<E> {
 		quickSort(partition + 1, right);
 	}
 
-	private static int getPartition(int left, int right, int pivot) {
+	private int getPartition(int left, int right, int pivot) {
 		int lPtr = left - 1;
 		int rPtr = right;
 		for (;;) {
@@ -91,7 +91,7 @@ public class SortingTest<E> implements Sorting<E> {
 		return lPtr;
 	}
 
-	private static void swap(int one, int two) {
+	private void swap(int one, int two) {
 		int temp = list.get(one);
 		list.remove(one);
 		list.add(temp);
@@ -108,7 +108,7 @@ public class SortingTest<E> implements Sorting<E> {
 		return n;
 	}
 
-	private static void mergeSortHelper(int low, int hi) {
+	private void mergeSortHelper(int low, int hi) {
 		if (low == hi)
 			return;
 		int mid = (low + hi) >> 1;
@@ -117,7 +117,7 @@ public class SortingTest<E> implements Sorting<E> {
 		merge(low, mid + 1, hi);
 	}
 
-	private static void merge(int low, int hi, int upperBound) {
+	private void merge(int low, int hi, int upperBound) {
 		int j = 0;
 		int lowerBound = low;
 		int mid = hi - 1;
