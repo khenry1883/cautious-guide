@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class SortingTest<E> implements Sorting<E> {
+	static LinkedList<Integer> list = new LinkedList<Integer>();
 
 	// constructor
 	public SortingTest() {
@@ -12,44 +13,128 @@ public class SortingTest<E> implements Sorting<E> {
 
 	public static void main(String[] args) {
 		String str = "";
-		int n = 10;
-		LinkedList<Integer> list = new LinkedList<Integer>();
+		int n = 1500;
 		SortingTest sort = new SortingTest();
 		Random random = new Random();
 		for (int i = 0; i < n; i++) {
-			list.add(random.nextInt());
+			list.add(random.nextInt(100));
 		}
-		System.out.print(str += list);
-		sort.insertionSort(list, 0, 0, false);
+		System.out.println(str += list);
+		long timeBefore = System.currentTimeMillis();
+		sort.insertionSort(list, false);
+		long timeAfter = System.currentTimeMillis();
+		long totalTime = timeAfter - timeBefore;
 		System.out.println("" + list);
-		System.out.println("end");
+		System.out.println("Total time: " + totalTime * 1000000 + " ns ");
 
 	}
 
 	@Override
-	public void insertionSort(LinkedList<E> list, int lowindex, int highindex, boolean reversed) {
-		for (int nextPos = 1; nextPos < list.size(); nextPos++) {
-			int temp = nextPos;
-			Comparable nextVal = (Comparable) list.get(temp);
-			while (temp > 0 || nextVal.compareTo(list.get(temp - 1)) < 0) {
-				list.remove(temp);
-				list.add(temp - 1, (E) nextVal);
-				temp--;
+	public void insertionSort(LinkedList<E> list, boolean reversed) {
+		int nextPos, temp = 0;
+		Comparable nextVal = null;
+		if (reversed == false) {
+			for (nextPos = 1; nextPos < list.size(); nextPos++) {
+				temp = nextPos;
+				nextVal = (Comparable) list.get(temp);
+				while (temp > 0 && nextVal.compareTo(list.get(temp - 1)) < 0) {
+					list.remove(temp);
+					list.add(temp - 1, (E) nextVal);
+					temp--;
+				}
 			}
-			list.add(temp, (E) nextVal);
+		} else {
+			for (nextPos = 1; nextPos < list.size(); nextPos++) {
+				temp = nextPos;
+				nextVal = (Comparable) list.get(temp);
+				while (temp > 0 && nextVal.compareTo(list.get(temp - 1)) > 0) {
+					list.remove(temp);
+					list.add(temp - 1, (E) nextVal);
+					temp--;
+				}
+			}
 		}
 	}
 
 	@Override
-	public void quicksort(LinkedList<E> list, int lowindex, int highindex, boolean reversed) {
-		// TODO Auto-generated method stub
+	public void quicksort(LinkedList<E> list, boolean reversed) {
+		if(reversed == false) {
+			LinkedList n = list;
+			quickSort(0, list.size() - 1);
+			return n;
+		} else {
+	}
 
+	private static void quickSort(int left, int right) {
+		if (right - left <= 0)
+			return;
+		int pivot = list.get(right);
+		int partition = getPartition(left, right, pivot);
+		quickSort(left, partition - 1);
+		quickSort(partition + 1, right);
+	}
+
+	private static int getPartition(int left, int right, int pivot) {
+		int lPtr = left - 1;
+		int rPtr = right;
+		for (;;) {
+			while (list.get(++lPtr) < pivot)
+				;
+			while (rPtr > 0 && list.get(--rPtr) > pivot)
+				;
+			if (lPtr >= rPtr)
+				break;
+			else
+				swap(lPtr, rPtr);
+		}
+		swap(lPtr, right);
+		return lPtr;
+	}
+
+	private static void swap(int one, int two) {
+		int temp = list.get(one);
+		list.remove(one);
+		list.add(temp);
+		int tempTwo = list.get(two);
+		list.remove(two);
+		list.add(tempTwo);
 	}
 
 	@Override
 	public void mergeSortLL(LinkedList<E> list, boolean reversed) {
-		// TODO Auto-generated method stub
+		LinkedList n = list;
+		LinkedList<E> aux = new LinkedList<E>;
+		mergeSortHelper(0,n.size() - 1);
+		return n;
+	}
 
+	private static void mergeSortHelper(int low, int hi) {
+		if (low == hi)
+			return;
+		int mid = (low + hi) >> 1;
+		mergeSortHelper(low, mid);
+		mergeSortHelper(mid + 1, hi);
+		merge(low, mid + 1, hi);
+	}
+
+	private static void merge(int low, int hi, int upperBound) {
+		int j = 0;
+		int lowerBound = low;
+		int mid = hi - 1;
+		int numElements = upperBound - lowerBound + 1; // number of items
+
+		while (low <= mid && hi <= upperBound)
+			if (n.get(low) <= n.get(hi))
+				aux.get(j++) = n.get(low++);
+			else
+				aux.get(j++) = n.get(hi++);
+		while (low <= mid)
+			aux.get(j++) = n.get(low++);
+		while (hi <= upperBound)
+			aux.get(j++) = n.get(hi++);
+		for (j = 0; j < numElements; j++) {
+			n.get(lowerBound) = aux.get(j);
+		}
 	}
 
 }
