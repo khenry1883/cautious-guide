@@ -21,7 +21,8 @@ public class SortingTest<E> implements Sorting<E> {
 		}
 		System.out.print(str += list);
 		sort.insertionSort(list, 0, 0, false);
-		System.out.print("end");
+		System.out.println("" + list);
+		System.out.println("end");
 
 	}
 
@@ -32,10 +33,10 @@ public class SortingTest<E> implements Sorting<E> {
 			while (nextPos > 0 && nextVal.compareTo(list.get(nextPos - 1)) < 0) {
 				list.remove(nextPos);
 				list.add(nextPos - 1, (E) nextVal);
+				nextPos--;
 			}
 			list.add(nextPos, (E) nextVal);
 		}
-		System.out.println("" + list);
 	}
 
 	@Override
