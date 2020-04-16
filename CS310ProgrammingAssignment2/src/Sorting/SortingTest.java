@@ -77,16 +77,16 @@ public class SortingTest<E> implements Sorting<E> {
 		int lPtr = left - 1;
 		int rPtr = right;
 		for (;;) {
-			while (list.get(++lPtr) < pivot)
+			while (list.get(++lPtr)).compareTo(pivot) < 0)
 				;
-			while (rPtr > 0 && list.get(--rPtr) > pivot)
+			while (rPtr > 0 && list.get(--rPtr).compareTo(pivot))
 				;
 			if (lPtr >= rPtr)
 				break;
 			else
-				swap(lPtr, rPtr);
+				swap(list, lPtr, rPtr);
 		}
-		swap(lPtr, right);
+		swap(list, lPtr, right);
 		return lPtr;
 	}
 
@@ -122,7 +122,7 @@ public class SortingTest<E> implements Sorting<E> {
 		int numElements = upperBound - lowerBound + 1; // number of items
 
 		while (low <= mid && hi <= upperBound)
-			if (n.get(low) <= n.get(hi))
+			if ((n.get(low)).compareTo(n.get(hi)))
 				aux.get(j++) = n.get(low++);
 			else
 				aux.get(j++) = n.get(hi++);
