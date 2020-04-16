@@ -91,12 +91,9 @@ public class SortingTest<E> implements Sorting<E> {
 	}
 
 	private void swap(LinkedList list, int one, int two) {
-		Object temp = list.get(one);
-		list.remove(one);
-		list.add(temp);
-		Object tempTwo = list.get(two);
-		list.remove(two);
-		list.add(tempTwo);
+		E temp = (E) list.get(one);
+		list.set(one, list.get(two));
+		list.set(two, (E) temp);
 	}
 
 	@Override
