@@ -13,7 +13,7 @@ public class SortingTest<E> implements Sorting<E> {
 	}
 
 	public static void main(String[] args) {
-		SortingTest sort = new SortingTest();
+		SortingTest<Integer> sort = new SortingTest<Integer>();
 		sort.list;
 		Random random = new Random();
 		// Insertion Sort; Sorted from Unsorted and Sorted (Not Reverse)
