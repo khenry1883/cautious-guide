@@ -78,9 +78,9 @@ public class SortingTest<E> implements Sorting<E> {
 
 	public void printTime(SortingTest sort, Random random, String str, int input, boolean reversed) {
 		if (str == "Insertion Sort" && reversed == false) {
-			LinkedList<E> list = new LinkedList<E>();
+			LinkedList<Integer> list = new LinkedList<Integer>();
 			for (int i = 0; i < input; i++) {
-				list.add(random.nextInt(), null);
+				list.add(random.nextInt());
 			}
 			long timeBeforeInsertionUnsorted = System.currentTimeMillis();
 			sort.insertionSort(list, false);
@@ -94,9 +94,9 @@ public class SortingTest<E> implements Sorting<E> {
 			long totalTimeInsertionSorted = timeAfterInsertionSorted - timeBeforeInsertionSorted;
 			System.out.println("Time for sorted list (Insertion): " + totalTimeInsertionSorted * 1000000 + " ns ");
 		} else if (str == "Insertion Sort" && reversed == true) {
-			LinkedList<E> list = new LinkedList<E>();
+			LinkedList<Integer> list = new LinkedList<Integer>();
 			for (int i = 0; i < input; i++) {
-				list.add(random.nextInt(100), null);
+				list.add(random.nextInt());
 			}
 			long timeBeforeInsertionReverse = System.currentTimeMillis();
 			sort.insertionSort(list, true);
@@ -105,9 +105,9 @@ public class SortingTest<E> implements Sorting<E> {
 			System.out.println(
 					"Time for reverse sorted list (Insertion): " + totalTimeInsertionReverse * 1000000 + " ns ");
 		} else if (str == "Quick Sort" && reversed == false) {
-			LinkedList<E> list = new LinkedList<E>();
+			LinkedList<Integer> list = new LinkedList<Integer>();
 			for (int i = 0; i < input; i++) {
-				list.add(random.nextInt(), null);
+				list.add(random.nextInt());
 			}
 			long timeBeforeQuickUnsorted = System.currentTimeMillis();
 			sort.quicksort(list, false);
@@ -121,9 +121,9 @@ public class SortingTest<E> implements Sorting<E> {
 			long totalTimeQuickSorted = timeAfterQuickSorted - timeBeforeQuickSorted;
 			System.out.println("Time for sorted list (Quick Sort): " + totalTimeQuickSorted * 1000000 + " ns ");
 		} else if (str == "Quick Sort" && reversed == true) {
-			LinkedList<E> list = new LinkedList<E>();
+			LinkedList<Integer> list = new LinkedList<Integer>();
 			for (int i = 0; i < input; i++) {
-				list.add(random.nextInt(), null);
+				list.add(random.nextInt());
 			}
 			long timeBeforeQuickReverse = System.currentTimeMillis();
 			sort.quicksort(list, true);
@@ -132,9 +132,9 @@ public class SortingTest<E> implements Sorting<E> {
 			System.out
 					.println("Time for reverse sorted list (Quick Sort): " + totalTimeQuickReverse * 1000000 + " ns ");
 		} else if (str == "Merge Sort" && reversed == false) {
-			LinkedList<E> list = new LinkedList<E>();
+			LinkedList<Integer> list = new LinkedList<Integer>();
 			for (int i = 0; i < input; i++) {
-				list.add(random.nextInt(), null);
+				list.add(random.nextInt());
 			}
 			long timeBeforeMergeUnsorted = System.currentTimeMillis();
 			sort.mergeSortLL(list, false);
@@ -148,9 +148,9 @@ public class SortingTest<E> implements Sorting<E> {
 			long totalTimeMergeSorted = timeAfterMergeSorted - timeBeforeMergeSorted;
 			System.out.println("Time for sorted list (Merge Sort): " + totalTimeMergeSorted * 1000000 + " ns ");
 		} else if (str == "Merge Sort" && reversed == true) {
-			LinkedList<E> list = new LinkedList<E>();
+			LinkedList<Integer> list = new LinkedList<Integer>();
 			for (int i = 0; i < input; i++) {
-				list.add(random.nextInt(), null);
+				list.add(random.nextInt());
 			}
 			long timeBeforeMergeReverse = System.currentTimeMillis();
 			sort.mergeSortLL(list, true);
