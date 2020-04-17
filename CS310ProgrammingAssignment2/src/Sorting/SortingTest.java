@@ -254,7 +254,7 @@ public class SortingTest<E> implements Sorting<E> {
 				else
 					aux.set(j++, n.get(hi++));
 			} else {
-				if (((Comparable) n.get(low)).compareTo(n.get(hi)) > 0)
+				if (((Comparable) n.get(low)).compareTo(n.get(hi)) < 0)
 					aux.set(j++, n.get(low++));
 				else
 					aux.set(j++, n.get(hi++));
