@@ -14,71 +14,71 @@ public class SortingTest<E> implements Sorting<E> {
 
 	public static void main(String[] args) {
 		SortingTest<Integer> sort = new SortingTest<Integer>();
-		sort.list;
 		Random random = new Random();
 		// Insertion Sort; Sorted from Unsorted and Sorted (Not Reverse)
-		printTime(sort, list, random, "Insertion Sort", 10, false);
-		printTime(sort, list, random, "Insertion Sort", 50, false);
-		printTime(sort, list, random, "Insertion Sort", 100, false);
-		printTime(sort, list, random, "Insertion Sort", 150, false);
-		printTime(sort, list, random, "Insertion Sort", 300, false);
-		printTime(sort, list, random, "Insertion Sort", 500, false);
-		printTime(sort, list, random, "Insertion Sort", 1000, false);
-		printTime(sort, list, random, "Insertion Sort", 1500, false);
+		sort.printTime(sort, random, "Insertion Sort", 10, false);
+		sort.printTime(sort, random, "Insertion Sort", 50, false);
+		sort.printTime(sort, random, "Insertion Sort", 100, false);
+		sort.printTime(sort, random, "Insertion Sort", 150, false);
+		sort.printTime(sort, random, "Insertion Sort", 300, false);
+		sort.printTime(sort, random, "Insertion Sort", 500, false);
+		sort.printTime(sort, random, "Insertion Sort", 1000, false);
+		sort.printTime(sort, random, "Insertion Sort", 1500, false);
 
 		// Insertion Sort; Sorted from Reverse
-		printTime(sort, list, random, "Insertion Sort", 10, true);
-		printTime(sort, list, random, "Insertion Sort", 50, true);
-		printTime(sort, list, random, "Insertion Sort", 100, true);
-		printTime(sort, list, random, "Insertion Sort", 150, true);
-		printTime(sort, list, random, "Insertion Sort", 300, true);
-		printTime(sort, list, random, "Insertion Sort", 500, true);
-		printTime(sort, list, random, "Insertion Sort", 1000, true);
-		printTime(sort, list, random, "Insertion Sort", 1500, true);
+		sort.printTime(sort, random, "Insertion Sort", 10, true);
+		sort.printTime(sort, random, "Insertion Sort", 50, true);
+		sort.printTime(sort, random, "Insertion Sort", 100, true);
+		sort.printTime(sort, random, "Insertion Sort", 150, true);
+		sort.printTime(sort, random, "Insertion Sort", 300, true);
+		sort.printTime(sort, random, "Insertion Sort", 500, true);
+		sort.printTime(sort, random, "Insertion Sort", 1000, true);
+		sort.printTime(sort, random, "Insertion Sort", 1500, true);
 
 		// Quick Sort; Sorted from Unsorted and Sorted (Not Reverse)
-		printTime(sort, list, random, "Quick Sort", 10, false);
-		printTime(sort, list, random, "Quick Sort", 50, false);
-		printTime(sort, list, random, "Quick Sort", 100, false);
-		printTime(sort, list, random, "Quick Sort", 150, false);
-		printTime(sort, list, random, "Quick Sort", 300, false);
-		printTime(sort, list, random, "Quick Sort", 500, false);
-		printTime(sort, list, random, "Quick Sort", 1000, false);
-		printTime(sort, list, random, "Quick Sort", 1500, false);
+		sort.printTime(sort, random, "Quick Sort", 10, false);
+		sort.printTime(sort, random, "Quick Sort", 50, false);
+		sort.printTime(sort, random, "Quick Sort", 100, false);
+		sort.printTime(sort, random, "Quick Sort", 150, false);
+		sort.printTime(sort, random, "Quick Sort", 300, false);
+		sort.printTime(sort, random, "Quick Sort", 500, false);
+		sort.printTime(sort, random, "Quick Sort", 1000, false);
+		sort.printTime(sort, random, "Quick Sort", 1500, false);
 
 		// Quick Sort; Sorted from Reverse
-		printTime(sort, list, random, "Quick Sort", 10, true);
-		printTime(sort, list, random, "Quick Sort", 50, true);
-		printTime(sort, list, random, "Quick Sort", 100, true);
-		printTime(sort, list, random, "Quick Sort", 150, true);
-		printTime(sort, list, random, "Quick Sort", 300, true);
-		printTime(sort, list, random, "Quick Sort", 500, true);
-		printTime(sort, list, random, "Quick Sort", 1000, true);
-		printTime(sort, list, random, "Quick Sort", 1500, true);
+		sort.printTime(sort, random, "Quick Sort", 10, true);
+		sort.printTime(sort, random, "Quick Sort", 50, true);
+		sort.printTime(sort, random, "Quick Sort", 100, true);
+		sort.printTime(sort, random, "Quick Sort", 150, true);
+		sort.printTime(sort, random, "Quick Sort", 300, true);
+		sort.printTime(sort, random, "Quick Sort", 500, true);
+		sort.printTime(sort, random, "Quick Sort", 1000, true);
+		sort.printTime(sort, random, "Quick Sort", 1500, true);
 
 		// Merge Sort; Sorted from Unsorted and Sorted (Not Reverse)
-		printTime(sort, list, random, "Merge Sort", 10, false);
-		printTime(sort, list, random, "Merge Sort", 50, false);
-		printTime(sort, list, random, "Merge Sort", 100, false);
-		printTime(sort, list, random, "Merge Sort", 150, false);
-		printTime(sort, list, random, "Merge Sort", 300, false);
-		printTime(sort, list, random, "Merge Sort", 500, false);
-		printTime(sort, list, random, "Merge Sort", 1000, false);
-		printTime(sort, list, random, "Merge Sort", 1500, false);
+		sort.printTime(sort, random, "Merge Sort", 10, false);
+		sort.printTime(sort, random, "Merge Sort", 50, false);
+		sort.printTime(sort, random, "Merge Sort", 100, false);
+		sort.printTime(sort, random, "Merge Sort", 150, false);
+		sort.printTime(sort, random, "Merge Sort", 300, false);
+		sort.printTime(sort, random, "Merge Sort", 500, false);
+		sort.printTime(sort, random, "Merge Sort", 1000, false);
+		sort.printTime(sort, random, "Merge Sort", 1500, false);
 
 		// Merge Sort; Sorted from Reverse
-		printTime(sort, list, random, "Merge Sort", 10, true);
-		printTime(sort, list, random, "Merge Sort", 50, true);
-		printTime(sort, list, random, "Merge Sort", 100, true);
-		printTime(sort, list, random, "Merge Sort", 150, true);
-		printTime(sort, list, random, "Merge Sort", 300, true);
-		printTime(sort, list, random, "Merge Sort", 500, true);
-		printTime(sort, list, random, "Merge Sort", 1000, true);
-		printTime(sort, list, random, "Merge Sort", 1500, true);
+		sort.printTime(sort, random, "Merge Sort", 10, true);
+		sort.printTime(sort, random, "Merge Sort", 50, true);
+		sort.printTime(sort, random, "Merge Sort", 100, true);
+		sort.printTime(sort, random, "Merge Sort", 150, true);
+		sort.printTime(sort, random, "Merge Sort", 300, true);
+		sort.printTime(sort, random, "Merge Sort", 500, true);
+		sort.printTime(sort, random, "Merge Sort", 1000, true);
+		sort.printTime(sort, random, "Merge Sort", 1500, true);
 	}
 
-	public void printTime(SortingTest sort, LinkedList list, Random random, String str, int input, boolean reversed) {
+	public void printTime(SortingTest sort, Random random, String str, int input, boolean reversed) {
 		if (str == "Insertion Sort" && reversed == false) {
+			LinkedList<E> list = new LinkedList<E>();
 			for (int i = 0; i < input; i++) {
 				list.add(random.nextInt(), null);
 			}
@@ -94,6 +94,7 @@ public class SortingTest<E> implements Sorting<E> {
 			long totalTimeInsertionSorted = timeAfterInsertionSorted - timeBeforeInsertionSorted;
 			System.out.println("Time for sorted list (Insertion): " + totalTimeInsertionSorted * 1000000 + " ns ");
 		} else if (str == "Insertion Sort" && reversed == true) {
+			LinkedList<E> list = new LinkedList<E>();
 			for (int i = 0; i < input; i++) {
 				list.add(random.nextInt(100), null);
 			}
@@ -104,6 +105,7 @@ public class SortingTest<E> implements Sorting<E> {
 			System.out.println(
 					"Time for reverse sorted list (Insertion): " + totalTimeInsertionReverse * 1000000 + " ns ");
 		} else if (str == "Quick Sort" && reversed == false) {
+			LinkedList<E> list = new LinkedList<E>();
 			for (int i = 0; i < input; i++) {
 				list.add(random.nextInt(), null);
 			}
@@ -119,6 +121,7 @@ public class SortingTest<E> implements Sorting<E> {
 			long totalTimeQuickSorted = timeAfterQuickSorted - timeBeforeQuickSorted;
 			System.out.println("Time for sorted list (Quick Sort): " + totalTimeQuickSorted * 1000000 + " ns ");
 		} else if (str == "Quick Sort" && reversed == true) {
+			LinkedList<E> list = new LinkedList<E>();
 			for (int i = 0; i < input; i++) {
 				list.add(random.nextInt(), null);
 			}
@@ -129,6 +132,7 @@ public class SortingTest<E> implements Sorting<E> {
 			System.out
 					.println("Time for reverse sorted list (Quick Sort): " + totalTimeQuickReverse * 1000000 + " ns ");
 		} else if (str == "Merge Sort" && reversed == false) {
+			LinkedList<E> list = new LinkedList<E>();
 			for (int i = 0; i < input; i++) {
 				list.add(random.nextInt(), null);
 			}
@@ -144,6 +148,7 @@ public class SortingTest<E> implements Sorting<E> {
 			long totalTimeMergeSorted = timeAfterMergeSorted - timeBeforeMergeSorted;
 			System.out.println("Time for sorted list (Merge Sort): " + totalTimeMergeSorted * 1000000 + " ns ");
 		} else if (str == "Merge Sort" && reversed == true) {
+			LinkedList<E> list = new LinkedList<E>();
 			for (int i = 0; i < input; i++) {
 				list.add(random.nextInt(), null);
 			}
