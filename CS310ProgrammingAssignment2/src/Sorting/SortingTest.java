@@ -5,15 +5,16 @@ import java.util.Random;
 
 public class SortingTest<E> implements Sorting<E> {
 
+	LinkedList<E> list;
+
 	// constructor
 	public SortingTest() {
 		LinkedList<E> list = new LinkedList<E>();
 	}
 
 	public static void main(String[] args) {
-		String str = "";
-		int n = 1500;
 		SortingTest sort = new SortingTest();
+		sort.list;
 		Random random = new Random();
 		// Insertion Sort; Sorted from Unsorted and Sorted (Not Reverse)
 		printTime(sort, list, random, "Insertion Sort", 10, false);
@@ -183,29 +184,30 @@ public class SortingTest<E> implements Sorting<E> {
 
 	@Override
 	public void quicksort(LinkedList<E> list, boolean reversed) {
-		if (reversed == false) {
-			LinkedList n = list;
-			quickSort(list, 0, list.size() - 1);
-		} else {
-
-		}
+		LinkedList n = list;
+		quickSort(list, 0, list.size() - 1, reversed);
 	}
 
-	private void quickSort(LinkedList<E> list, int left, int right) {
+	private void quickSort(LinkedList<E> list, int left, int right, boolean reversed) {
 		if (right - left <= 0)
 			return;
 		Comparable pivot = (Comparable) list.get(right);
-		int partition = getPartition(list, left, right, pivot);
-		quickSort(list, left, partition - 1);
-		quickSort(list, partition + 1, right);
+		int partition = getPartition(list, left, right, pivot, reversed);
+		quickSort(list, left, partition - 1, reversed);
+		quickSort(list, partition + 1, right, reversed);
 	}
 
-	private int getPartition(LinkedList<E> list, int left, int right, Comparable pivot) {
+	private int getPartition(LinkedList<E> list, int left, int right, Comparable pivot, boolean reversed) {
 		int lPtr = left - 1;
 		int rPtr = right;
 		for (;;) {
-			while (((Comparable) list.get(++lPtr)).compareTo(pivot) > 0)
-				;
+			if (reversed == false) {
+				while (((Comparable) list.get(++lPtr)).compareTo(pivot) > 0)
+					;
+			} else {
+				while (((Comparable) list.get(++lPtr)).compareTo(pivot) < 0)
+					;
+			}
 			while (rPtr > 0 && ((Comparable) list.get(--rPtr)).compareTo(pivot) > 0)
 				;
 			if (lPtr >= rPtr)
@@ -227,29 +229,37 @@ public class SortingTest<E> implements Sorting<E> {
 	public void mergeSortLL(LinkedList<E> list, boolean reversed) {
 		LinkedList n = list;
 		LinkedList<E> aux = new LinkedList<E>();
-		mergeSortHelper(n, aux, 0, n.size() - 1);
+		mergeSortHelper(n, aux, 0, n.size() - 1, reversed);
 	}
 
-	private void mergeSortHelper(LinkedList<E> n, LinkedList<E> aux, int low, int hi) {
+	private void mergeSortHelper(LinkedList<E> n, LinkedList<E> aux, int low, int hi, boolean reversed) {
 		if (low == hi)
 			return;
 		int mid = (low + hi) >> 1;
-		mergeSortHelper(n, aux, low, mid);
-		mergeSortHelper(n, aux, mid + 1, hi);
-		merge(n, aux, low, mid + 1, hi);
+		mergeSortHelper(n, aux, low, mid, reversed);
+		mergeSortHelper(n, aux, mid + 1, hi, reversed);
+		merge(n, aux, low, mid + 1, hi, reversed);
 	}
 
-	private void merge(LinkedList<E> n, LinkedList<E> aux, int low, int hi, int upperBound) {
+	private void merge(LinkedList<E> n, LinkedList<E> aux, int low, int hi, int upperBound, boolean reversed) {
 		int j = 0;
 		int lowerBound = low;
 		int mid = hi - 1;
 		int numElements = upperBound - lowerBound + 1; // number of items
 
-		while (low <= mid && hi <= upperBound)
-			if (((Comparable) n.get(low)).compareTo(n.get(hi)) > 0)
-				aux.set(j++, n.get(low++));
-			else
-				aux.set(j++, n.get(hi++));
+		while (low <= mid && hi <= upperBound) {
+			if (reversed == false) {
+				if (((Comparable) n.get(low)).compareTo(n.get(hi)) > 0)
+					aux.set(j++, n.get(low++));
+				else
+					aux.set(j++, n.get(hi++));
+			} else {
+				if (((Comparable) n.get(low)).compareTo(n.get(hi)) > 0)
+					aux.set(j++, n.get(low++));
+				else
+					aux.set(j++, n.get(hi++));
+			}
+		}
 		while (low <= mid)
 			aux.set(j++, n.get(low++));
 		while (hi <= upperBound)
